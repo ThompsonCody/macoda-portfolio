@@ -1,0 +1,58 @@
+<section id="about" class="section">
+  <div class="container about">
+    <div class="about__media">
+      <img src="/images/astronaut-bird.jpg" alt="Illustrated bird astronaut artwork" />
+    </div>
+
+    <div class="about__content">
+      <h2 class="section-title about__title">About</h2>
+      <p>
+        Art and design inspired by symbolism, philosophy, and the unseen.
+      </p>
+      <p>
+        My work explores symbolic language and storytelling through illustration and design,
+        focusing on identity, mythology, and experimental visual narratives.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .about__media img {
+    width: 100%;
+    border-radius: var(--radius);
+  }
+
+  .about__title {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .about__content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 560px;
+  }
+
+  @media (max-width: 900px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+
+    .about__title {
+      text-align: center;
+    }
+
+    .about__content {
+      text-align: center;
+      margin-inline: auto;
+    }
+  }
+</style>

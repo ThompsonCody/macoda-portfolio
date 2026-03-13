@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { creations } from "../../data/creations";
+import type { Creation } from "../../data/creations";
+
+export async function getStaticPaths() {
+  return creations.map((creation) => ({
+    params: { slug: creation.slug },
+    props: { creation }
+  }));
+}
+
+const { creation } = Astro.props as { creation: Creation };
+---
+
+<BaseLayout
+  title={`${creation.title} | MaCoda`}
+  description={creation.excerpt}
+>
+  <main class="creation-page">
+    <section class="creation-hero section">
+      <div class="container creation-hero__inner">
+        <a href="/#selected-work" class="creation-back">← Back to Selected Work</a>
+
+        <div class="creation-hero__meta">
+          <p class="creation-kicker">{creation.category}</p>
+          <h1 class="creation-title">{creation.title}</h1>
+
+          <div class="creation-submeta">
+            {creation.year && <p class="creation-year">{creation.year}</p>}
+            <p class="creation-excerpt">{creation.excerpt}</p>
+          </div>
+        </div>
+
+        <div class="creation-hero__image">
+          <img src={creation.image} alt={creation.alt} />
+        </div>
+      </div>
+    </section>
+
+    <section class="creation-body section">
+      <div class="container creation-body__grid">
+        <article class="creation-copy">
+          {creation.body.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </article>
+
+        {creation.gallery && creation.gallery.length > 0 && (
+          <aside class="creation-gallery">
+            {creation.gallery.map((item) => (
+              <figure class="creation-gallery__item">
+                <img src={item.image} alt={item.alt} loading="lazy" />
+              </figure>
+            ))}
+          </aside>
+        )}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .creation-page {
+    position: relative;
+  }
+
+  .creation-hero {
+    padding-top: clamp(7rem, 11vw, 10rem);
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+  }
+
+  .creation-hero__inner {
+    max-width: 1100px;
+  }
+
+  .creation-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  .creation-back:hover {
+    color: var(--text);
+  }
+
+  .creation-hero__meta {
+    max-width: 760px;
+    margin-bottom: 2.5rem;
+  }
+
+  .creation-kicker {
+    margin: 0 0 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+  }
+
+  .creation-title {
+    margin: 0;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 0.98;
+    font-weight: 500;
+  }
+
+  .creation-submeta {
+    margin-top: 1.5rem;
+  }
+
+  .creation-year {
+    margin: 0 0 0.6rem;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  .creation-excerpt {
+    margin: 0;
+    max-width: 700px;
+    color: var(--text-dim);
+    font-size: 1.12rem;
+    line-height: 1.7;
+  }
+
+  .creation-hero__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .creation-body {
+    padding-top: 1rem;
+    padding-bottom: clamp(6rem, 10vw, 9rem);
+  }
+
+  .creation-body__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .creation-copy p {
+    margin: 0 0 1.4rem;
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    line-height: 1.8;
+  }
+
+  .creation-gallery {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .creation-gallery__item {
+    margin: 0;
+  }
+
+  .creation-gallery__item img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  @media (max-width: 900px) {
+    .creation-body__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

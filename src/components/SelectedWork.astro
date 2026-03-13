@@ -1,0 +1,134 @@
+---
+import WorkCard from "./WorkCard.astro";
+import { creations } from "../data/creations";
+
+const featuredCreations = creations.filter((item) => item.featured);
+const hiddenCreations = creations.filter((item) => !item.featured);
+---
+
+<section id="selected-work" class="section">
+  <div class="container">
+    <h2 class="section-title">Selected Work</h2>
+    <p class="section-intro">
+      A curated collection spanning branding, artwork, and symbolic visual exploration.
+    </p>
+
+    <div class="work-grid work-grid--featured">
+      {featuredCreations.map((creation) => (
+        <WorkCard {...creation} />
+      ))}
+    </div>
+
+    {hiddenCreations.length > 0 && (
+      <>
+        <div class="work-cta">
+          <button
+            class="button button--secondary work-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="more-creations"
+          >
+            View More Creations
+          </button>
+        </div>
+
+        <div
+          id="more-creations"
+          class="work-reveal"
+          hidden
+        >
+          <div class="work-grid work-grid--more">
+            {hiddenCreations.map((creation) => (
+              <WorkCard {...creation} />
+            ))}
+          </div>
+        </div>
+      </>
+    )}
+  </div>
+</section>
+
+<script>
+  const toggleButton = document.querySelector(".work-toggle") as HTMLButtonElement | null;
+  const revealBlock = document.querySelector("#more-creations") as HTMLDivElement | null;
+
+  if (toggleButton && revealBlock) {
+    toggleButton.addEventListener("click", () => {
+      const isExpanded = toggleButton.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+        revealBlock.classList.remove("is-open");
+
+        setTimeout(() => {
+          revealBlock.hidden = true;
+        }, 300);
+
+        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.textContent = "View More Creations";
+      } else {
+        revealBlock.hidden = false;
+
+        requestAnimationFrame(() => {
+          revealBlock.classList.add("is-open");
+        });
+
+        toggleButton.setAttribute("aria-expanded", "true");
+        toggleButton.textContent = "Show Less";
+      }
+    });
+  }
+</script>
+
+<style>
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+  }
+
+  .work-grid--featured :global(.work-card:nth-child(1)),
+  .work-grid--featured :global(.work-card:nth-child(2)),
+  .work-grid--featured :global(.work-card:nth-child(3)),
+  .work-grid--featured :global(.work-card:nth-child(4)) {
+    grid-column: span 6;
+  }
+
+  .work-grid--more {
+    margin-top: 0;
+  }
+
+  .work-grid--more :global(.work-card) {
+    grid-column: span 6;
+  }
+
+  .work-cta {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .work-reveal {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease;
+  }
+
+  .work-reveal.is-open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 800px) {
+    .work-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .work-grid--featured :global(.work-card),
+    .work-grid--more :global(.work-card) {
+      grid-column: auto;
+    }
+  }
+</style>

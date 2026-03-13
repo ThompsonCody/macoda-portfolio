@@ -1,0 +1,73 @@
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="contact-section__ornament" aria-hidden="true">
+      <span></span>
+      <i></i>
+      <span></span>
+    </div>
+
+    <h2 class="section-title contact-section__title">Let’s Connect</h2>
+
+    <p class="section-intro contact-section__intro">
+      For collaborations, freelance work, or creative conversations,
+      feel free to reach out through my social platforms below.
+    </p>
+
+    <div class="contact-section__media">
+      <img
+        src="/images/contact-totoro.png"
+        alt="Whimsical character artwork under an umbrella"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding-top: clamp(6rem, 10vw, 9rem);
+    padding-bottom: clamp(2rem, 5vw, 3rem);
+  }
+
+  .contact-section__ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto clamp(4rem, 7vw, 5rem);
+    width: min(100%, 1100px);
+  }
+
+  .contact-section__ornament span {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .contact-section__ornament i {
+    width: 10px;
+    height: 10px;
+    display: block;
+    transform: rotate(45deg);
+    border: 1px solid var(--accent);
+    background: rgba(216, 184, 132, 0.15);
+  }
+
+  .contact-section__title {
+    margin-bottom: 1rem;
+  }
+
+  .contact-section__intro {
+    max-width: 700px;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .contact-section__media {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .contact-section__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

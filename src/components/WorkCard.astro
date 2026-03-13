@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  category: string;
+  image: string;
+  alt: string;
+}
+
+const { title, slug, category, image, alt } = Astro.props;
+---
+
+<article class="work-card">
+  <a href={`/creations/${slug}`} class="work-card__link">
+    <div class="work-card__media">
+      <img src={image} alt={alt} loading="lazy" />
+    </div>
+
+    <div class="work-card__body">
+      <h3>{title}</h3>
+      <p>{category}</p>
+    </div>
+  </a>
+</article>
+
+<style>
+  .work-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .work-card__link {
+    display: block;
+  }
+
+  .work-card__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .work-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 240ms ease;
+  }
+
+  .work-card:hover .work-card__media img {
+    transform: scale(1.03);
+  }
+
+  .work-card__body {
+    padding: 1rem 1rem 1.2rem;
+  }
+
+  .work-card__body h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+
+  .work-card__body p {
+    margin: 0.45rem 0 0;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+  }
+</style>
