@@ -37,6 +37,18 @@ const nextProject =
           <div class="creation-submeta">
             {creation.year && <p class="creation-year">{creation.year}</p>}
             <p class="creation-excerpt">{creation.excerpt}</p>
+            {creation.link && (
+              <p class="creation-visit">
+                <a
+                  href={creation.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="creation-visit__button"
+                >
+                  Visit Live Site ↗
+                </a>
+              </p>
+            )}
           </div>
         </div>
 
@@ -158,6 +170,26 @@ const nextProject =
     display: block;
     border-radius: 18px;
     box-shadow: var(--shadow);
+  }
+
+  .creation-visit {
+    margin-top: 1.5rem;
+  }
+
+  .creation-visit__button {
+    display: inline-block;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    transition: all 180ms ease;
+  }
+
+  .creation-visit__button:hover {
+    background: var(--accent);
+    color: #0b0806;
   }
 
   .creation-body {

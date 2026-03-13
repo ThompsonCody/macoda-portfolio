@@ -8,6 +8,7 @@ export type Creation = {
   featured: boolean;
   year?: string;
   body: string[];
+  link?: string;
   gallery?: {
     image: string;
     alt: string;
@@ -25,10 +26,14 @@ export const creations: Creation[] = [
       "A grounded arborist brand identity and lightweight marketing site built to give a local business a strong online presence.",
     featured: true,
     year: "2026",
+    link: "https://treewerx.netlify.app/",
     body: [
-      "Power Tree Werx was developed as a brand and web presence project for a Shuswap-area arborist business. The goal was to create a professional but approachable identity that felt practical, outdoors-oriented, and trustworthy.",
-      "The visual direction balances utility with regional character, using strong typography, clear service presentation, and a rugged but clean aesthetic that suits tree work and local service branding.",
-      "This project also became a useful case study in translating a small business identity into a simple static marketing website with clear hierarchy and strong visual anchoring."
+      "I originally set out to experiment with building an Astro-based theme, and realized that a friend’s arborist company no longer had a functioning website. Their business directory listing even linked to a dead page. Many local service businesses still generate enough word-of-mouth work that maintaining a traditional website doesn’t always feel worthwhile, especially if it isn’t producing clear returns.",
+      "Since I needed a project idea, I decided to build and gift them a simple, no – hassle online presence – essentially a single-page brand site that functions like an enhanced digital business card.",
+      "The site was built using Astro and modular components, and is hosted on Netlify to keep it lightweight and cost-free to maintain. The layout is composed of reusable sections (Hero, Services, Gallery, Service Area, and Contact) wrapped in a shared base layout for consistency and maintainability. Images are handled through Astro’s asset pipeline with lazy loading, while the “Recent Work” gallery uses a small custom JavaScript lightbox to allow visitors to view project photos in more detail.",
+      "Styling is implemented with modern CSS variables and grid layouts, creating a responsive interface that adapts cleanly across desktop and mobile devices. A Google Maps integration visually communicates the company’s service area across the Shuswap region.",
+      "The project emphasizes performance, simplicity, and maintainable component structure for a small local business site.",
+      "The site is still being finalized, but will soon be fully deployed and indexed."
     ],
     gallery: [
       {
