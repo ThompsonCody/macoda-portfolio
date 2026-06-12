@@ -1,3 +1,27 @@
+
+
+# Macoda Portfolio
+
+Personal creative portfolio for Macoda / Cody Thompson, built with Astro.
+
+## Stack
+
+- Astro
+- TypeScript
+- CSS
+- Netlify
+- Sanity CMS planned
+
+## Features
+
+- Custom atmospheric background
+- Selected work grid
+- Dynamic project pages
+- Project gallery support
+- SEO-ready layout structure
+
+------------------------------------------------------------------------------------------------
+
 # Astro Starter Kit: Minimal
 
 ```sh

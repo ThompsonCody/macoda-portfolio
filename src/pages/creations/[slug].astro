@@ -26,16 +26,32 @@ const nextProject =
   description={creation.excerpt}
 >
   <main class="creation-page">
+    <header class="creation-site-header">
+      <div class="container creation-site-header__inner">
+        <a href="/" class="creation-logo-link" aria-label="Return to MaCoda homepage">
+          <img
+            src="/images/MacOda.png"
+            alt=""
+            class="creation-logo"
+          />
+        </a>
+      </div>
+    </header>
     <section class="creation-hero section">
       <div class="container creation-hero__inner">
         <a href="/#selected-work" class="creation-back">← Back to Selected Work</a>
 
         <div class="creation-hero__meta">
           <p class="creation-kicker">{creation.category}</p>
+
           <h1 class="creation-title">{creation.title}</h1>
 
           <div class="creation-submeta">
-            {creation.year && <p class="creation-year">{creation.year}</p>}
+                <p class="creation-services">
+                  <span>Scope: </span>
+                  {creation.services.join(" · ")}
+              </p>
+            <!-- {creation.year && <p class="creation-year">{creation.year}</p>} -->
             <p class="creation-excerpt">{creation.excerpt}</p>
             {creation.link && (
               <p class="creation-visit">
@@ -106,8 +122,40 @@ const nextProject =
     position: relative;
   }
 
+  /* logo homepage-button element */
+  .creation-site-header {
+    position: relative;
+    z-index: 2;
+    padding-top: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .creation-site-header__inner {
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .creation-logo-link {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.9;
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .creation-logo-link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .creation-logo {
+    width: clamp(120px, 18vw, 180px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+  }
+
   .creation-hero {
-    padding-top: clamp(7rem, 11vw, 10rem);
+    padding-top: clamp(3rem, 7vw, 6rem);
     padding-bottom: clamp(4rem, 8vw, 6rem);
   }
 
@@ -137,7 +185,14 @@ const nextProject =
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.8rem;
-  }
+  } .creation-hero__meta > .creation-kicker + .creation-kicker {
+      margin-top: 0.45rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+      max-width: 48rem;
+      line-height: 1.6;
+    }
 
   .creation-title {
     margin: 0;

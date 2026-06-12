@@ -13,13 +13,31 @@ export type Creation = {
     image: string;
     alt: string;
   }[];
+  excerpt: string;
+  role?: string;
+  tools?: string[];
+  services?: string[];
+  projectType?: "client" | "concept" | "personal" | "internal";
+  status?: "live" | "archived" | "concept" | "in-progress";
+
+  challenge?: string;
+  approach?: string;
+  outcome?: string;
+  body: string[];
+
+  link?: string;
+  repo?: string;
+
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export const creations: Creation[] = [
   {
     title: "Power Tree Werx",
     slug: "power-tree-werx",
-    category: "Brand Identity",
+    category: "Web Design / Development",
+    services: ["Brand Identity", "Frontend Development", "Local SEO", "Copywriting"],
     image: "/images/power-tree-werx.png",
     alt: "Power Tree Werx branding mockup",
     excerpt:
@@ -46,6 +64,7 @@ export const creations: Creation[] = [
     title: "Cargo Reliant",
     slug: "cargo-reliant",
     category: "Brand Identity",
+    services: ["Logo Design", "Visual Identity", "Vehicle Branding", "Applied Mockups"],
     image: "/images/cargo-reliant.jpg",
     alt: "Cargo Reliant truck branding mockup",
     excerpt:
@@ -68,6 +87,7 @@ export const creations: Creation[] = [
     title: "Kahnawake",
     slug: "kahnawake",
     category: "Symbol Design",
+    services: ["Symbol Design", "Emblem Development", "Shape Refinement", "Identity Exploration"],
     image: "/images/kahnawake.png",
     alt: "Kahnawake symbol design work",
     excerpt:
@@ -90,6 +110,7 @@ export const creations: Creation[] = [
     title: "Ansuz Om",
     slug: "ansuz-om",
     category: "Symbol Design",
+    services: ["Symbol Design", "Ornamental Composition", "Visual Synthesis", "Spiritual Motif Study"],
     image: "/images/ansuz-om.jpg",
     alt: "Ansuz Om symbol design artwork",
     excerpt:
@@ -112,6 +133,7 @@ export const creations: Creation[] = [
     title: "Panboo Bamboo Treats",
     slug: "panboo-bamboo-treats",
     category: "Brand Identity",
+    services: ["Brand Concept", "Product Identity", "Packaging Direction", "Visual Tone"],
     image: "/images/panboo-bamboo-treats.jpg",
     alt: "Panboo Bamboo Treats design artwork",
     excerpt:
@@ -134,6 +156,7 @@ export const creations: Creation[] = [
     title: "Midnight Sun",
     slug: "midnight-sun",
     category: "Illustration",
+    services: ["Illustration", "Symbolic Composition", "Atmosphere Design", "Visual Storytelling"],
     image: "/images/midnight-sun.jpg",
     alt: "Midnight Sun symbolic illustration",
     excerpt:
@@ -156,6 +179,7 @@ export const creations: Creation[] = [
     title: "Taza Berlin Doner",
     slug: "taza-berlin-doner",
     category: "Brand Identity",
+    services: ["Brand Identity", "Food Branding", "Signage Direction", "Applied Mockups"],
     image: "/images/taza-berlin-doner.png",
     alt: "Taza Berlin Doner branding",
     excerpt:
@@ -178,6 +202,7 @@ export const creations: Creation[] = [
     title: "Houssey Cafe+Kitchen+Lounge",
     slug: "houssey-cafe-kitchen-lounge",
     category: "Brand Identity",
+    services: ["Brand Identity", "Hospitality Branding", "Art Direction", "Visual System"],
     image: "/images/houssey-cafe-kitchen-lounge.png",
     alt: "Houssey Cafe+Kitchen+Lounge branding",
     excerpt:
@@ -200,6 +225,7 @@ export const creations: Creation[] = [
     title: "Truck Hunt",
     slug: "truck-hunt",
     category: "Brand Identity",
+    services: ["Brand Identity", "Commercial Branding", "Logo Direction", "Applied Identity"],
     image: "/images/truck-hunt.png",
     alt: "Truck Hunt branding",
     excerpt:
