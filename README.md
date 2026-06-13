@@ -10,7 +10,7 @@ Personal creative portfolio for Macoda / Cody Thompson, built with Astro.
 - TypeScript
 - CSS
 - Netlify
-- Sanity CMS planned
+- Sanity CMS 
 
 ## Features
 

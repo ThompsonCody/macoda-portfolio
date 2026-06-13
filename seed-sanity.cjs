@@ -1,3 +1,6 @@
+// This script seeds the Sanity dataset with creation documents based on the data defined in src/data/creations.ts.
+// !!!! this is a one-time migration script and should not be rerun casually because it may upload duplicate image assets. Do not change the script logic
+
 const fs = require('fs')
 const path = require('path')
 const SanityClient = require('@sanity/client')
