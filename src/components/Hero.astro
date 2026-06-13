@@ -44,6 +44,26 @@
     align-items: center;
   }
 
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at center,
+        rgba(12, 9, 6, 0.72) 0%,
+        rgba(12, 9, 6, 0.48) 32%,
+        rgba(12, 9, 6, 0.18) 58%,
+        rgba(12, 9, 6, 0.05) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(12, 9, 6, 0.36),
+        rgba(12, 9, 6, 0.2),
+        rgba(12, 9, 6, 0.42)
+      );
+  }
+
   .hero__branding {
     display: flex;
     justify-content: center;
