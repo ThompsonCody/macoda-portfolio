@@ -1,16 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { creations } from "../../data/creations";
-import type { Creation } from "../../data/creations";
+import { getCreations } from "../../lib/sanity";
 
 export async function getStaticPaths() {
+  const creations = await getCreations();
   return creations.map((creation) => ({
     params: { slug: creation.slug },
     props: { creation }
   }));
 }
 
-const { creation } = Astro.props as { creation: Creation };
+const creations = await getCreations();
+const { creation } = Astro.props as { creation: Record<string, any> };
 
 const currentIndex = creations.findIndex((item) => item.slug === creation.slug);
 

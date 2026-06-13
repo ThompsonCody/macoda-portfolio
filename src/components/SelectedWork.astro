@@ -1,7 +1,7 @@
 ---
 import WorkCard from "./WorkCard.astro";
-import { creations } from "../data/creations";
 
+const { creations } = Astro.props as { creations: Array<Record<string, any>> };
 const featuredCreations = creations.filter((item) => item.featured);
 const hiddenCreations = creations.filter((item) => !item.featured);
 ---
