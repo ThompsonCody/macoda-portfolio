@@ -20,6 +20,8 @@ const previousProject =
 
 const nextProject =
   currentIndex < creations.length - 1 ? creations[currentIndex + 1] : null;
+const statusLabel = creation.status
+  ? creation.status.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()) : "";
 ---
 
 <BaseLayout
@@ -43,7 +45,16 @@ const nextProject =
         <a href="/#selected-work" class="creation-back">← Back to Selected Work</a>
 
         <div class="creation-hero__meta">
-          <p class="creation-kicker">{creation.category}</p>
+          <p class="creation-kicker">
+            <span>{creation.category}</span>
+
+            {statusLabel && (
+              <>
+                <span class="creation-kicker__separator"> · </span>
+                <span class="creation-kicker__status">{statusLabel}</span>
+              </>
+            )}
+          </p>
 
           <h1 class="creation-title">{creation.title}</h1>
 
@@ -194,6 +205,15 @@ const nextProject =
       max-width: 48rem;
       line-height: 1.6;
     }
+
+  .creation-kicker__separator {
+    color: var(--text-dim);
+    opacity: 0.7;
+  }
+
+  .creation-kicker__status {
+    color: var(--text-dim);
+  }
 
   .creation-title {
     margin: 0;
